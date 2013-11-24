@@ -6,7 +6,7 @@ module OmniAuth
 
     class AppFigures < OmniAuth::Strategies::OAuth
       
-      option :name, 'appfigures'
+      option :name, 'appFigures'
       
       option :client_options, {
         :access_token_path => "/v2/oauth/access_token",
