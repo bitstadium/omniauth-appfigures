@@ -28,7 +28,7 @@ You will have to put in your key and secret, which you can get from https://appf
 
 After you have the gem running and the configuration is done, you can get to the follow url to log the user in:
 
-	http://localhost:3000/auth/appfigures
+	http://localhost:3000/auth/appFigures
 
 Now just follow the README at: https://github.com/intridea/omniauth
 
