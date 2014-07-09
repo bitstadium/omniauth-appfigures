@@ -22,6 +22,27 @@ Once these are in, you need to add the following to your `config/initializers/om
     	provider :appFigures, 'consumer_key', 'consumer_secret'
     end
 
+...or configure it with an setup method:
+
+    Rails.application.config.middleware.use OmniAuth::Builder do
+    	provider :appFigures, :setup => true, :failure_path => '/auth/failure...'
+    end
+
+    class AppfiguresAuthController < ApplicationController
+      def setup
+        request.env['omniauth.strategy'].options[:consumer_key] = ...
+        request.env['omniauth.strategy'].options[:consumer_secret] = ...
+        request.env['omniauth.strategy'].options[:failure_path] = ...
+
+        render :text => 'Omniauth setup phase.', :status => 404
+      end
+
+      def failure
+        flash[:error] = 'Client ID or Secret is wrong!'
+
+        redirect_to ...
+      end
+    end
 
 You will have to put in your key and secret, which you can get from https://appfigures.com/developers/keys
 
